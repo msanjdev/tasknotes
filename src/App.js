@@ -6,7 +6,7 @@ import TaskNote from './TaskNote';
 
 function App() {
 
-  const [noteTitles, setNoteTitles] = useState([])
+  const [noteTitles, setNoteTitles] = useState([""])
 
   return (
     <div className="App">
@@ -14,10 +14,13 @@ function App() {
           Task List
       </h1>{
         noteTitles.map((title, index) => {
-              return <TaskNote title={title} />
+              return <TaskNote key={index} title={title} />
           })}
-        <TaskNote title="" />
-        <button className='btn-new-task-note' onClick={() => {setNoteTitles([...noteTitles, ""])}}>+</button>
+        <button className='btn-new-task-note' onClick={() => {
+          setNoteTitles(["", ...noteTitles])
+        }}>
+          +
+        </button>
     </div>
   );
 }
