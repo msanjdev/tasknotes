@@ -1,0 +1,109 @@
+.App {
+  /* text-align: center; */
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 4vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+d
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.task-title {
+  font-size: larger;
+  font-weight: bold;
+  margin-bottom: 16px;
+  margin-left: 8px;
+}
+
+input.edit-task-name {
+  background-color: transparent;
+  border: 1px solid lightgray;
+  outline: none;
+  width: 100%;
+}
+
+.task-item {
+  display: inline-block;
+  width: 90%;
+  height: 1em;
+  /* white-space: nowrap; */
+}
+
+.task-list-items {
+  text-align: left;
+  width: 20%;
+  margin-left: 8%;
+  background-color: lightyellow;
+  /* border: 1px outset lightgray; */
+  border-radius: 4px;
+  /* display: inline-block; */
+  padding: 12px;
+
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+  & input.new-task-name {
+    margin-left: 16%;
+  }
+
+  & ul {
+    list-style-type: none;
+    text-align: left;
+    margin-left: 0;
+    /* display: inline-block; */
+  }
+
+  & li {
+    padding: 8px;
+    /* margin: 12px; */
+    /* width: 25%; */
+  }
+}
+
+.tl-taskpad {
+  display: inline-block;
+  vertical-align: text-top;
+  margin: 8px;
+
+}
+
+.btn-new-task-note {
+  vertical-align: middle;
+  margin-top: 4%;
+  color: gray;
+  background-color: lightyellow;
+  cursor: pointer;
+  padding: 24px;
+  font-size: 2em;
+  font-weight: lighter;
+  border: 1px solid lightgray;
+  border-radius: 4px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+  &:hover {
+    box-shadow: rgba(0, 0, 0, 0.48) 0px 6px 16px;
+  }
+}
