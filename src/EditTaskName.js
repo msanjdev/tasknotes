@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-const EditTaskName = ({ initialText, className }) => {
+const EditTaskName = ({ initialText, className, updateChange }) => {
 
   
   const [isEditing, setIsEditing] = useState(false);
@@ -12,10 +12,13 @@ const EditTaskName = ({ initialText, className }) => {
 
   const handleDoubleClick = () => {
     setIsEditing(true);
-  };
+  }
+
   const handleChange = (event) => {
     setText(event.target.value);
-  };
+    if (updateChange) updateChange(event.target.value);
+  }
+  
   const handleBlur = () => {
     setIsEditing(false);
     // Save the changes or perform any required actions here
@@ -29,6 +32,9 @@ const EditTaskName = ({ initialText, className }) => {
     
         case 'Escape':
             setIsEditing(false)
+            break;
+
+        default:
     }
   }
 

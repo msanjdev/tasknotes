@@ -107,3 +107,14 @@ input.edit-task-name {
     box-shadow: rgba(0, 0, 0, 0.48) 0px 6px 16px;
   }
 }
+
+.btn-save {
+  margin: 24px;
+  padding: 16px;
+  border-radius: 4px;
+  cursor: pointer;
+
+  &:hover {
+    box-shadow: rgba(0, 0, 0, 0.48) 0px 6px 16px;
+  }
+}

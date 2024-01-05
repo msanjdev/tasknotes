@@ -1,11 +1,27 @@
 import EditTaskName from './EditTaskName';
 import './TaskNote.css';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
-export const TaskNote = ({title}) => {
+export const TaskNote = ({index, updateTaskData}) => {
     const [taskList, setTaskList] = useState([]);
-    const [noteTitle, setNoteTitle] = useState(title);
+    const [noteTitle, setNoteTitle] = useState();
+    const [keyValue, setKeyValue] = useState(index)
   
+    // useEffect(() => {
+    //   console.log('key ... ' + key)
+    //   setKeyValue(key)
+    // }, [])
+
+    useEffect(() => {
+      console.log(`tasklist changed ${taskList}`)
+
+      updateTaskData({
+        "key": index,
+        "noteTitle": noteTitle,
+        "taskList": taskList
+      })
+    }, [taskList, noteTitle])
+
     const handleTaskChange = (index) => {
       const updatedTasks = [...taskList];
       updatedTasks[index].completed = !updatedTasks[index].completed;
@@ -15,6 +31,7 @@ export const TaskNote = ({title}) => {
     const addNewTask = (newTask) => {
       if (newTask.trim() === '') return; // Prevent adding empty tasks
       const updatedTasks = [...taskList, { text: newTask, completed: false }];
+      console.log (`setting tasks to ${updatedTasks} - ${noteTitle}`)
       setTaskList(updatedTasks);
     }
   
@@ -64,14 +81,15 @@ export const TaskNote = ({title}) => {
                   
                 />
                 <div className='task-item' style={{ color: task.completed ? 'gray' : 'none' }}>
-                  <EditTaskName initialText={task.text} />
+                  <EditTaskName initialText={task.text} updateChange={(value) => task.text = value} />
                 </div>
               </li>
     }
   
     return (
       <div className='task-list-items tl-taskpad'>
-        <EditTaskName initialText={noteTitle} className='task-title' />
+        <EditTaskName initialText={noteTitle} className='task-title' updateChange={setNoteTitle}/>
+        {/* setTaskName={setNoteTitle} */}
         <div >
           <NewTaskItem addNewTask={addNewTask} />
           <ul>{
