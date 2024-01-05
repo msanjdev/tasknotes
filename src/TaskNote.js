@@ -2,15 +2,15 @@ import EditTaskName from './EditTaskName';
 import './TaskNote.css';
 import React, { useEffect, useState } from 'react';
 
-export const TaskNote = ({index, updateTaskData}) => {
+export const TaskNote = ({index, noteTitleValue, taskListValue, updateTaskData}) => {
     const [taskList, setTaskList] = useState([]);
     const [noteTitle, setNoteTitle] = useState();
-    const [keyValue, setKeyValue] = useState(index)
-  
-    // useEffect(() => {
-    //   console.log('key ... ' + key)
-    //   setKeyValue(key)
-    // }, [])
+
+    useEffect(() => {
+      console.log('key ... ' + index)
+      setNoteTitle(noteTitleValue)
+      setTaskList(taskListValue)
+    }, [])
 
     useEffect(() => {
       console.log(`tasklist changed ${taskList}`)

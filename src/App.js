@@ -6,12 +6,10 @@ import TaskNote from './TaskNote';
 
 function App() {
 
-  const [taskNoteList, setTaskNoteList] = useState([])
-
   const [taskNoteData, setTaskNoteData] = useState({})
 
   const handleSave = () => {
-    // console.log(taskNoteData)
+    console.log(taskNoteData)
     // window.localStorage.setItem('taskNoteData', taskNoteData)
   }
 
@@ -30,12 +28,9 @@ function App() {
   }
 
   const handleNewNote = () => {
-    const newNote = <TaskNote 
-                      key={taskNoteList.length} 
-                      index={Date.now()} 
-                      updateTaskData={updateTaskDataValue} />
+    const newNote = {title: "", list: []}
 
-    setTaskNoteList([...taskNoteList, newNote])
+    setTaskNoteData({...taskNoteData, [Date.now()]: newNote})
   }
 
   return (
@@ -43,8 +38,16 @@ function App() {
       <h1 className="App-header">
           Task List
       </h1>
-      
-      {taskNoteList}
+      <>
+      {
+        Object.entries(taskNoteData).map(([key, value]) => <TaskNote 
+                      key={key} 
+                      index={key}
+                      noteTitleValue={value.title}
+                      taskListValue={value.list}
+                      updateTaskData={updateTaskDataValue} />)
+      }
+      </>
       
         <button className='btn-new-task-note' onClick={handleNewNote}>
           +
